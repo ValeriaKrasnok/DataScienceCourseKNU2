@@ -4,16 +4,18 @@
 > library(readxl)
 > radiation <- read_xlsx("info_aes_blocks_18_10_2019.xlsx")
 > radiation
+##installed and downloaded a library xlxs
 ```R
 ```
 1. За допомогою download.file() завантажте любий excel файл з порталу http://data.gov.ua та зчитайте його (xls, xlsx – бінарні формати, тому
 встановить mode = “wb”. Виведіть перші 6 строк отриманого фрейму даних.
 ```R
 ```
-download.file("https://data.gov.ua/dataset/2cde453d-a726-40e8-95f5-03eb05d4bfcc/resource/2e477324-76a3-4802-8e80-0ec2dc196a03/download/info_aes_blocks_18_10_2019.xlsx",
-              "info_aes_blocks_18_10_2019.xlsx", mode = "wb")
+
+> download.file("https://data.gov.ua/dataset/2cde453d-a726-40e8-95f5-03eb05d4bfcc/resource/2e477324-76a3-4802-8e80-0ec2dc196a03/download/info_aes_blocks_18_10_2019.xlsx",
+                "info_aes_blocks_18_10_2019.xlsx", mode = "wb")
 > radiation <- read_xlsx("info_aes_blocks_18_10_2019.xlsx")
-> radiation
+> tail(radiation,6)
 station unit_number installed_capacity reactor_type fuel
 10    РАЕС           4               1000    ВВЕР-1000    Т
 11    ХАЕС           1               1000    ВВЕР-1000    Т
@@ -21,6 +23,7 @@ station unit_number installed_capacity reactor_type fuel
 13   ЮУАЕС           1               1000    ВВЕР-1000    Т
 14   ЮУАЕС           2               1000    ВВЕР-1000   ТВ
 15   ЮУАЕС           3               1000    ВВЕР-1000    В
+##with help of function tail was downloaded last six rows of data 
 ```R
 ```
 2. За допомогою download.file() завантажте файл getdata_data_ss06hid.csv за
@@ -36,6 +39,7 @@ https://www.dropbox.com/s/dijv0rlwo4mryv5/PUMSDataDict06.pdf?dl=0
 trying URL 'https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06hid.csv'
 Content type 'text/csv' length 4246554 bytes (4.0 MB)
 downloaded 4.0 MB
+##downloaded file from the link
 > data <- read.csv("getdata_data_ss06hid")
 > data
 RT SERIALNO DIVISION PUMA REGION ST  ADJUST WGTP NP TYPE ACR AGS BDS BLD BUS CONP
@@ -129,7 +133,8 @@ wgtp78 wgtp79 wgtp80
 4     77    242    231
 5    176    144     38
 [ reached 'max' / getOption("max.print") -- omitted 6491 rows ]
-##on COdeBook we can see that property=24 has a value more than $1000000
+
+##on CodeBook we can see that property=24 has a value more than $1000000
 > val24<-which(data$VAL==24)
 > val24
 [1]  192  241  555  568  590  680  787  956 1115 1212 1480 1485 1822 1856 2065 2178
@@ -138,6 +143,7 @@ wgtp78 wgtp79 wgtp80
 [49] 6239 6334 6400 6420 6426
 > length(val24)
 [1] 53
+##founded a property with a value=$1000000+
 ```R
 ```
 3. Зчитайте xml файл за посиланням
@@ -157,7 +163,7 @@ C:\Users\Валерия\AppData\Local\Temp\RtmpqS8L6N\downloaded_packages
 ##downloaded a XML package 
 > library("XML")
 > url <- "http://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Frestaurants.xml"
-> > doc <- xmlTreeParse(url, useInternal=TRUE)
+> doc <- xmlTreeParse(url, useInternal=TRUE)
 > rootNode <- xmlRoot(doc)
 > xmlName(rootNode)
 [1] "response"
@@ -167,5 +173,7 @@ row
 > zipcode <- xpathSApply(doc, "//zipcode", xmlValue)
 > length(which(zipcode==21231))
 [1] 127
+##found amount of restaurants that have a zipcode=21231 
 ```R
 ```
+
