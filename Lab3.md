@@ -26,6 +26,11 @@ rank_data <- html_text(rank_data_html)
 > runtime_data <- html_text(runtime_data_html)
 > head(runtime_data)
 [1] "25 min" "30 min" "57 min" "45 min" "70 min" "30 min"
+##removed mins and converted to numerical
+> runtime_data<-gsub(" min","",runtime_data)
+> runtime_data<-as.numeric(runtime_data)
+> head(runtime_data)
+[1] 1 2 3 4 5 6
 ##below you can see a data frame with 3 titles
 > data.frame(rank_data,title_data, runtime_data, stringsAsFactors = FALSE)
     rank_data                               title_data runtime_data
@@ -133,5 +138,101 @@ rank_data <- html_text(rank_data_html)
 ```R
 ```
 1. Виведіть перші 6 назв фільмів дата фрейму
+```R
+```
+> head(movies$title_data, 6)
+[1] "The End of the F***ing World" "Atypical"                    
+[3] "Дивовижна мiсiс Мейзел"       "Рiвердейл"                   
+[5] "Паперовий будинок"            "Великий рот"     
+##entered first 6 rows of movies by title_data (name of movie)
+```R
+```
+2. Виведіть всі назви фільмів с тривалістю більше 120 хв.
+```R
+```
+> subset(movies$title_data, runtime_data > 120)
+ [1] "The End of the F***ing World"            
+ [2] "Atypical"                                
+ [3] "Дивовижна мiсiс Мейзел"                  
+ [4] "Рiвердейл"                               
+ [5] "Паперовий будинок"                       
+ [6] "Великий рот"                             
+ [7] "Мисливець на розум"                      
+ [8] "The Good Doctor"                         
+ [9] "Оповiдь служницi"                        
+[10] "Britannia"                               
+[11] "Dark"                                    
+[12] "Воно"                                    
+[13] "Call Me by Your Name"                    
+[14] "Той, хто бiжить по лезу 2049"            
+[15] "The Deuce"                               
+[16] "SEAL Team"                               
+[17] "Озарк"                                   
+[18] "13 причин чому"                          
+[19] "Юний Шелдон"                             
+[20] "S.W.A.T."                                
+[21] "The Sinner"                              
+[22] "Зорянi вiйни: Епiзод 8 - Останнi Джедаi" 
+[23] "Велика маленька брехня"                  
+[24] "Зоряний шлях: Дискаверi"                 
+[25] "Mr. Mercedes"                            
+[26] "Kingsman: Золоте кiльце"                 
+[27] "Тебе нiколи тут не було"                 
+[28] "Лiга справедливостi"                     
+[29] "Табу"                                    
+[30] "Красуня i Чудовисько"                    
+[31] "Тор: Рагнарок"                           
+[32] "Диво-Жiнка"                              
+[33] "Орвiл"                                   
+[34] "Dynasty"                                 
+[35] "Workin' Moms"                            
+[36] "Каратель"                                
+[37] "Ледi Бьорд"                              
+[38] "Логан: Росомаха"                         
+[39] "Greenhouse Academy"                      
+[40] "Мати!"                                   
+[41] "Валерiан i мiсто тисячi планет"          
+[42] "Anne"                                    
+[43] "GLOW"                                    
+[44] "Американськi Боги"                       
+[45] "Legion"                                  
+[46] "Зменшення"                               
+[47] "Синя безодня"                            
+[48] "Гра Моллi"                               
+[49] "Анна й Апокалiпсис"                      
+[50] "Пiрати Карибського моря: Помста Салазара"
+[51] "Форма води"                              
+[52] "Чужий: Заповiт"                          
+[53] "Людина-павук: Повернення додому"         
+[54] "Окча"                                    
+[55] "Джон Уiк 2"                              
+[56] "Темнi часи"                              
+[57] "Вiйна за планету мавп"                   
+[58] "Get Shorty"                              
+[59] "Трансформери: Останнiй лицар"            
+[60] "Вартовi Галактики 2"                     
+[61] "Time Trap"                               
+[62] "The Babysitter"                          
+[63] "Щасливий день смертi"                    
+[64] "Падiння ордену"                          
+[65] "Saban's Могутнi рейнджери"               
+[66] "Король Артур: Легенда меча"              
+[67] "Форсаж 8"                                
+[68] "Twin Peaks"                              
+[69] "Примарна нитка"                          
+[70] "Вороги"                                  
+[71] "The Gifted"                              
+[72] "A Series of Unfortunate Events"          
+[73] "Godless"                                 
+[74] "Room 104"                                
+[75] "Santa Clarita Diet"                      
+[76] "Вбивство священного оленя"               
+[77] "Пила 8"                                  
+[78] "Сiм сестер"                              
+[79] "Вавилон-Берлiн"                   
+##entered all movies that have a runtime more than 120 mins
+```R
+```
+3. Скільки фільмів мають тривалість менше 100 хв.
 ```R
 ```
