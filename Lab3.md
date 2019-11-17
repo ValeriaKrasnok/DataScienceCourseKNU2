@@ -30,7 +30,7 @@ rank_data <- html_text(rank_data_html)
 > runtime_data<-gsub(" min","",runtime_data)
 > runtime_data<-as.numeric(runtime_data)
 > head(runtime_data)
-[1] 1 2 3 4 5 6
+[1] 25 30 57 45 70 30
 ##below you can see a data frame with 3 titles
 > data.frame(rank_data,title_data, runtime_data, stringsAsFactors = FALSE)
     rank_data                               title_data runtime_data
