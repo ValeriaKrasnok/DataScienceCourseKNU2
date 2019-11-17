@@ -236,3 +236,7 @@ rank_data <- html_text(rank_data_html)
 3. Скільки фільмів мають тривалість менше 100 хв.
 ```R
 ```
+> length(subset(movies$title_data, runtime_data < 100))
+[1] 48
+```R
+```
