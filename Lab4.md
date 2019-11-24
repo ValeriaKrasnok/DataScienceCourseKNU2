@@ -9,3 +9,10 @@
 ##created connection with library
 > conn <- dbConnect(RSQLite::SQLite(), "E:\\Study\\RSQLite\\db\\datasets.sqlite")
 > res <- dbSendQuery(conn, "SELECT Title, EventType as Events FROM Papers ORDER BY Title")
+
+conn <- dbConnect(RSQLite::SQLite(), "E:\\database (1).sqlite")
+res <- dbSendQuery(conn, "SELECT Title, EventType as Events FROM Papers ORDER BY Title"
+df <- dbFetch(res, EventType=Spotlight) 
+dbClearResult(res) 
+dbDisconnect(conn) 
+df
