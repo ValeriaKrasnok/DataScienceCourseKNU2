@@ -105,4 +105,61 @@ dbDisconnect(conn)
 4. Ім’я автору (Name), кількість статей по кожному автору (NumPapers).
 Сортування по кількості статей від більшої кількості до меньшої.
 ```
-
+> conn <- dbConnect(RSQLite::SQLite(), "E:\\database (1).sqlite")
+> res4 <- dbSendQuery(conn, "SELECT authors.name, count(Papers.title) NumPapers FROM Authors JOIN PaperAuthors ON authors.Id=PaperAuthors.AuthorId JOIN papers ON Papers.Id=PaperAuthors.paperid GROUP by name ORDER by NumPapers DESC;")
+> df <- dbFetch(res4, 50)
+> dbClearResult(res4)
+> dbDisconnect(conn)
+> df
+                      Name NumPapers
+1     Pradeep K. Ravikumar         7
+2                  Han Liu         6
+3           Lawrence Carin         6
+4      Inderjit S. Dhillon         5
+5                  Le Song         5
+6        Zoubin Ghahramani         5
+7           Christopher Re         4
+8         Csaba Szepesvari         4
+9              Honglak Lee         4
+10          Josh Tenenbaum         4
+11       Michael I. Jordan         4
+12          Percy S. Liang         4
+13            Prateek Jain         4
+14           Ryan P. Adams         4
+15             Shie Mannor         4
+16    Simon Lacoste-Julien         4
+17           Yoshua Bengio         4
+18            Zhaoran Wang         4
+19   Alexandros G. Dimakis         3
+20            Ambuj Tewari         3
+21        Antonio Torralba         3
+22        Arindam Banerjee         3
+23         David B. Dunson         3
+24              David Blei         3
+25        David E. Carlson         3
+26 Dimitris Papailiopoulos         3
+27              Elad Hazan         3
+28      Kamalika Chaudhuri         3
+29           Matthias Hein         3
+30           Oriol Vinyals         3
+31            Parag Singla         3
+32        Rafael Frongillo         3
+33           Ricardo Henao         3
+34       Richard E. Turner         3
+35 Ruslan R. Salakhutdinov         3
+36               Shuang Li         3
+37              Tong Zhang         3
+38        Vibhav G. Gogate         3
+39              Yann LeCun         3
+40            Zoltan Szabo         3
+41             Ahmed Hefny         2
+42           Alekh Agarwal         2
+43           Alex J. Smola         2
+44      Alexander T. Ihler         2
+45     Alexandre Proutiere         2
+46        Andrea Montanari         2
+47          Andreas Krause         2
+48     Anna E. Choromanska         2
+49      Ariel D. Procaccia         2
+50          Arthur Gretton         2
+##an example of not full table of authors and number of their papers
