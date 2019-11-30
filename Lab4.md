@@ -14,7 +14,6 @@
 > conn <- dbConnect(RSQLite::SQLite(), "E:\\database (1).sqlite")
 > res <- dbSendQuery(conn, "SELECT Title, EventType FROM Papers WHERE EVENTTYPE ='Spotlight' ORDER BY Title" )
 > df <- dbFetch(res, 20)
-> dbClearResult(res)
 > dbClearResult(res) 
 > dbDisconnect(conn)
 > df
@@ -66,3 +65,44 @@
 2. Ім’я автора (Name), Назва статті (Title). Необхідно вивести всі назви статей
 для автора «Josh Tenenbaum». Сортування по назві статті
 ```
+conn <- dbConnect(RSQLite::SQLite(), "E:\\database (1).sqlite")
+res2 <- dbSendQuery(conn, "SELECT  authors.name,  Papers.title FROM authors JOIN PaperAuthors ON authors.Id=PaperAuthors.AuthorId JOIN Papers ON Papers.Id=PaperAuthors.paperid WHERE Name='Josh Tenenbaum' ORDER by Title;")
+df <- dbFetch(res2,5) 
+dbClearResult(res2) 
+dbDisconnect(conn) 
+> df
+            Name
+1 Josh Tenenbaum
+2 Josh Tenenbaum
+3 Josh Tenenbaum
+4 Josh Tenenbaum
+                                                                                              Title
+1                                                       Deep Convolutional Inverse Graphics Network
+2 Galileo: Perceiving Physical Object Properties by Integrating a Physics Engine with Deep Learning
+3                                                Softstar: Heuristic-Guided Probabilistic Inference
+4                                                        Unsupervised Learning by Program Synthesis
+
+```R
+3. Вибрати всі назви статей (Title), в яких є слово «statistical». Сортування по
+назві статті.
+```
+> conn <- dbConnect(RSQLite::SQLite(), "E:\\database (1).sqlite")
+> res3 <- dbSendQuery(conn, "SELECT Title FROM Papers WHERE Title LIKE '%statistical%' ORDER BY Title;")
+> df <- dbFetch(res3, 10)
+> dbClearResult(res3)
+> dbDisconnect(conn)
+> df
+                                                                                 Title
+1 Adaptive Primal-Dual Splitting Methods for Statistical Learning and Image Processing
+2                                Evaluating the statistical significance of biclusters
+3                  Fast Randomized Kernel Ridge Regression with Statistical Guarantees
+4     High Dimensional EM Algorithm: Statistical Optimization and Asymptotic Normality
+5                Non-convex Statistical Optimization for Sparse Tensor Graphical Model
+6            Regularized EM Algorithms: A Unified Framework and Statistical Guarantees
+7                            Statistical Model Criticism using Kernel Two Sample Tests
+8                         Statistical Topological Data Analysis - A Kernel Perspective
+```R
+4. Ім’я автору (Name), кількість статей по кожному автору (NumPapers).
+Сортування по кількості статей від більшої кількості до меньшої.
+```
+
