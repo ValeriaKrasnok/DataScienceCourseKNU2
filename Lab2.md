@@ -13,6 +13,7 @@
 ```
 3. Виведіть зміст файлу командою h5ls().
 ```{r}
+> library("rhdf5")
 > h5ls("E:/Study/H-H1_LOSC_C00_4_V1-1187006834-4096.hdf5")
 group            name       otype  dclass
 0                    /            meta   H5I_GROUP        
@@ -90,5 +91,29 @@ readStrain = h5read("")
 ```
 5. Також з «strain/Strain» зчитайте атрибут (функція h5readAttributes)
 Xspacing в змінну st та виведіть її. Це інтервал часу між вимірами.
+```{r}
+> stl<-h5readAttributes("E:/Study/H-H1_LOSC_C00_4_V1-1187006834-4096.hdf5", name = "strain/Strain")
+> st<-stl$Xspacing
+> st
+[1] 0.0002441406
+```
+6. Знайдіть час початку події та її тривалість. Для цього з групи meta зчитайте
+в змінну gpsStart name GPSstart та в змінну duration name Duration.
+```{r}
+> gpsStart<-h5read("E:/Study/H-H1_LOSC_C00_4_V1-1187006834-4096.hdf5", "meta/GPSstart")
+> gpsStart
+[1] 1187006834
+> duration<-h5read("E:/Study/H-H1_LOSC_C00_4_V1-1187006834-4096.hdf5", "meta/Duration")
+> duration
+[1] 4096
+```
+7. Знайдіть час закінчення події та збережіть його в змінну gpsEnd.
+```{r}
+> gpsEnd<- duration + gpsStart
+> gpsEnd
+[1] 1187010930
+```
+8. Створіть вектор з часу вимірів і збережіть у змінну myTime. Початок
+послідовності – gpsStart, кінець – gpsEnd, крок – st.
 ```{r}
 
