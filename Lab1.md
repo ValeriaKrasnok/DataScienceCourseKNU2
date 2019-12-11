@@ -1,3 +1,4 @@
+```{r]
 > install.packages("xlsx")
 > library(xlsx)
 > install.packages("readxl")
@@ -5,13 +6,10 @@
 > radiation <- read_xlsx("info_aes_blocks_18_10_2019.xlsx")
 > radiation
 ##installed and downloaded a library xlxs
-```R
 ```
 1. За допомогою download.file() завантажте любий excel файл з порталу http://data.gov.ua та зчитайте його (xls, xlsx – бінарні формати, тому
 встановить mode = “wb”. Виведіть перші 6 строк отриманого фрейму даних.
-```R
-```
-
+```{r]
 > download.file("https://data.gov.ua/dataset/2cde453d-a726-40e8-95f5-03eb05d4bfcc/resource/2e477324-76a3-4802-8e80-0ec2dc196a03/download/info_aes_blocks_18_10_2019.xlsx",
                 "info_aes_blocks_18_10_2019.xlsx", mode = "wb")
 > radiation <- read_xlsx("info_aes_blocks_18_10_2019.xlsx")
@@ -24,7 +22,6 @@ station unit_number installed_capacity reactor_type fuel
 14   ЮУАЕС           2               1000    ВВЕР-1000   ТВ
 15   ЮУАЕС           3               1000    ВВЕР-1000    В
 ##with help of function tail was downloaded last six rows of data 
-```R
 ```
 2. За допомогою download.file() завантажте файл getdata_data_ss06hid.csv за
 посиланням
@@ -33,8 +30,7 @@ https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06hid.csv та
 знаходиться за посиланням
 https://www.dropbox.com/s/dijv0rlwo4mryv5/PUMSDataDict06.pdf?dl=0
 Необхідно знайти, скільки property мають value $1000000+
-```R
-```
+```{r]
 > download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06hid.csv", "getdata_data_ss06hid")
 trying URL 'https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06hid.csv'
 Content type 'text/csv' length 4246554 bytes (4.0 MB)
