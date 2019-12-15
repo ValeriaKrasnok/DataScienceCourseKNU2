@@ -25,4 +25,4 @@ data4 <- aggregate(x = data3[, -c(67,68)],
 ##saved a file in csv format
 write.csv(data4, "tidy_dataset.csv", row.names=F)
 setwd("E:/lab5Rstudio")
-##in this directory we can find a downloaded file with name "tidy_dataset.csv"
+##in this directory we can find a downloaded file with name tidy_dataset in csv format
